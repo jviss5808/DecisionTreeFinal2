@@ -1,22 +1,100 @@
 ﻿Public Class Engine
     Private _dataSet As DataSet
+    Dim _decisionTree As New List(Of NodeWithVertices)
     Sub New(dataSet As DataSet)
         _dataSet = dataSet
     End Sub
 
+    Public Function PerformID3(trainingExamples As List(Of TrainingItem), trainingAttribute As TrainingAttribute) As Boolean
+
+        ' Are all examples of the same class?
+
+
+    End Function
+
     Public Function GenerateDecisionTree(dataSet As DataSet) As Boolean
         Try
+            ' Are all examples of the same class?
+            Dim commonClass = CheckIfExamplesAreOfSameClass(dataSet)
+            if (commonClass <> string.Empty)
+                ' return a leaf with common class label
+            End If
+
+            ' Are we out of attributes to test?
+            if (dataSet.AttributeList.Count = 0)
+                commonClass = GetMostCommonClass(dataSet)
+                ' return a leaf with common class label
+            End If
+
             ' Compute the set entropy
             Dim setEntropy = ComputeSetEntropy(dataSet)
 
             ' Compute information gain
             dataSet = ComputeInformationGain(dataSet, setEntropy)
+
+            ' Find the attribute with the highest information gain
+            Dim highestInformationGain = 0
+            Dim highestInformationGainIndex = - 1
+            for i = 0 to dataSet.AttributeList.Count - 1
+                if dataSet.AttributeList(i).InformationGain > highestInformationGain
+                    highestInformationGain = dataSet.AttributeList(i).InformationGain
+                    highestInformationGainIndex = i
+                End If
+            Next
+
+            ' Start building the tree
+            Dim highestInformationGainAttribute = dataSet.AttributeList(highestInformationGainIndex)
+            Dim nodeWithVertices as New NodeWithVertices
+            nodeWithVertices.AttributeName = highestInformationGainAttribute.AttributeName
+            for each attributeValue in highestInformationGainAttribute.AttributeValues
+                nodeWithVertices.Vertices.Add(attributeValue)
+            Next
+            nodeWithVertices.TreeLevel = 1
+            _decisionTree.Add(nodeWithVertices)
+
+            Dim sortedExamples as New List(Of TrainingItem)
+            for each vertice in nodeWithVertices.Vertices
+                sortedExamples = GetSortedExamples(nodeWithVertices.AttributeName, vertice, dataSet)
+                dim someNewVal = 11
+            Next
+
+
             dim someVal = 10
         Catch ex As Exception
             Return False
         End Try
 
         Return True
+    End Function
+
+    Public Function GetMostCommonClass(dataSet As DataSet)
+        Dim currentHighestFrequency As Integer = 0
+        Dim mostCommonClass as String = String.Empty
+        ' Query the frequency of all oracle values (categories) in the training data returning the highest 
+        for each oracleVal in dataSet.OracleCategories
+            Dim categoryCount = dataSet.TrainingData.Where(Function(x) x.OracleValue = oracleVal).Count
+            If categoryCount > currentHighestFrequency
+                currentHighestFrequency = categoryCount
+                mostCommonClass = oracleVal
+            End If
+        Next
+        return mostCommonClass
+    End Function
+
+    Public Function CheckIfExamplesAreOfSameClass(dataSet As DataSet) As String
+        Dim commonClass As String = string.Empty
+
+        ' If all the training values are of the same class, return that class
+        if (dataSet.TrainingData.All(Function(x) x.OracleValue = dataSet.TrainingData(0).OracleValue))
+            commonClass = dataSet.TrainingData(0).OracleValue
+        End If
+
+        return commonClass
+    End Function
+
+
+    Public Function GetSortedExamples(attributeName As String, attributeValue As String, dataSet as DataSet) As List(Of TrainingItem)
+        'for each trainingItem
     End Function
 
     Public Function ComputeInformationGain(dataSet As DataSet, setEntropy As Double) As DataSet
@@ -43,7 +121,7 @@
                 ' How many times did this current attribute value occur with each oracle category?
                 for each dataItem in dataSet.TrainingData
                     Dim oracleValue = dataItem.OracleValue
-                    if dataItem.AttributeValues(i) = currentAttributeValue
+                    if dataItem.AttributeValues(i).Value = currentAttributeValue
                         oracleCategoryDictionary(oracleValue) += 1
                         oracleCategoryDictionary("TotalCounts") += 1
                     End If
@@ -87,11 +165,6 @@
         return dataSet
     End Function
     
-    Public Function ComputePartialEntropy(oracleCategoryDictionaryList As List(Of Dictionary(Of String, Integer))) As Double
-        for each oracleCategoryDictionary in oracleCategoryDictionaryList
-
-        Next
-    End Function
 
     Public Function ComputeSetEntropy(dataSet As DataSet) As Double
 
@@ -147,5 +220,15 @@ End Class
 
 Public Class TrainingItem
     Public OracleValue As String = String.Empty
-    Public AttributeValues As New List(Of String)
+    Public AttributeValues As New List(Of AttributeNameValuePair)
+End Class
+
+Public Class AttributeNameValuePair
+    Public Name As String = ""
+    Public Value As String = ""
+
+    Sub New (name as String, value As String)
+        Me.Name = name
+        Me.Value = value
+    End Sub
 End Class

@@ -9,3 +9,14 @@ D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\obj\Debug\DecisionT
 D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\obj\Debug\DecisionTrees.exe
 D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\obj\Debug\DecisionTrees.xml
 D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\obj\Debug\DecisionTrees.pdb
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\GraphX.PCL.Common.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\GraphX.PCL.Logic.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\GraphX.WPF.Controls.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.Data.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.Graphviz.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.Serialization.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.xml
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.Data.xml
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.Graphviz.xml
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.Serialization.xml

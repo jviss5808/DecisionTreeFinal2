@@ -3,8 +3,8 @@
 Public Class HMI
     Public _engine As Engine
     Private Sub btnReadData_Click(sender As Object, e As EventArgs) Handles btnReadData.Click
-        'ReadData(".\Data\fishing.data")
-        ReadData(".\Data\car.data")
+        ReadData(".\Data\fishing.data")
+        'ReadData(".\Data\car.data")
         'ReadData(".\Data\iris.data")
     End Sub
 
@@ -66,7 +66,7 @@ Public Class HMI
 
             ' Collect all the attribute values for this training item
             for j = 0 to dataValues.Count - 2
-                trainingItem.AttributeValues.Add(dataValues(j))
+                trainingItem.AttributeValues.Add(New AttributeNameValuePair(dataSet.AttributeList(j).AttributeName, dataValues(j)))
             Next
 
             ' Add the training item to the training data
