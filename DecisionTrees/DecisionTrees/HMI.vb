@@ -3,8 +3,8 @@
 Public Class HMI
     Public _engine As Engine
     Private Sub btnReadData_Click(sender As Object, e As EventArgs) Handles btnReadData.Click
-        ReadData(".\Data\fishing.data")
-        'ReadData(".\Data\car.data")
+        'ReadData(".\Data\fishing.data")
+        ReadData(".\Data\car.data")
         'ReadData(".\Data\iris.data")
     End Sub
 
@@ -20,7 +20,8 @@ Public Class HMI
         Dim dataSet as DataSet = FormatData(dataLines)
 
         _engine = New Engine(dataSet)
-        Dim result = _engine.GenerateDecisionTree(dataSet)
+        Dim result = _engine.GenerateDecisionTree(dataSet, verticeICameFrom := "", treeLevel := 0)
+        _engine.HolyShitDidThisWork()
 
     End Sub
 
