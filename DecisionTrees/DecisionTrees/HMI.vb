@@ -1,10 +1,64 @@
 ﻿Imports System.IO
+Imports Microsoft.Glee.Drawing
+Imports Microsoft.Msagl
 
 Public Class HMI
     Public _engine As Engine
     Private Sub btnReadData_Click(sender As Object, e As EventArgs) Handles btnReadData.Click
+        Dim graphObj = new Microsoft.Glee.Drawing.Graph("Test-icles")
+
+        Dim node1 = "Forcecast"
+        Dim node2 = "Sunny"
+        Dim node3 = "Rainy"
+        Dim node4 = "Windy"
+
+        ' Change node attributes
+        'Microsoft.Glee.Drawing.Node n1 = graph.FindNode(strNode1);
+        'n1.Attr.Fillcolor = Microsoft.Glee.Drawing.Color.SeaGreen;
+        'n1.Attr.Shape = Microsoft.Glee.Drawing.Shape.DoubleCircle;
+ 
+        'Microsoft.Glee.Drawing.Node n2 = graph.FindNode(strNode2);
+        'n2.Attr.Fillcolor = Microsoft.Glee.Drawing.Color.Azure;
+        'n2.Attr.Shape = Microsoft.Glee.Drawing.Shape.House;
+ 
+        'Microsoft.Glee.Drawing.Node n3 = graph.FindNode(strNode3);
+        'n3.Attr.Fillcolor = Microsoft.Glee.Drawing.Color.Brown;
+        'n3.Attr.Shape = Microsoft.Glee.Drawing.Shape.Diamond;
+
+        graphObj.AddEdge(node1, "Edge 1", node2)
+        graphObj.AddEdge(node1, "Edge 2", node3)
+        graphObj.AddEdge(node1, "Edge 3", node4)
+        
+        Dim n1 = graphObj.FindNode(node1)
+        n1.Attr.Fillcolor = Microsoft.Glee.Drawing.Color.Aqua
+        n1.Attr.Shape = Shape.Diamond
+
+        Dim n2 = graphObj.FindNode(node2)
+        n2.Attr.Fillcolor = Microsoft.Glee.Drawing.Color.Aqua
+        n2.Attr.Shape = Shape.Diamond
+
+        Dim n3 = graphObj.FindNode(node3)
+        n3.Attr.Fillcolor = Microsoft.Glee.Drawing.Color.Green
+        n3.Attr.Shape = Shape.Box
+
+        Dim n4 = graphObj.FindNode(node4)
+        n4.Attr.Fillcolor = Microsoft.Glee.Drawing.Color.Aqua
+        n4.Attr.Shape = Shape.Diamond
+
+        GraphViewer.Graph = graphObj
+        ReadData(".\Data\contact-lenses.data")
+
+       
+        '// save the bitmap to a png file
+        'Microsoft.Glee.GraphViewerGdi.GraphRenderer renderer = new Microsoft.Glee.GraphViewerGdi.GraphRenderer(graph);
+        'renderer.CalculateLayout();
+        'int width = 900;
+        'Bitmap bitmap = new Bitmap(width, (int)(graph.Height * (width / graph.Width)), PixelFormat.Format32bppPArgb);
+        'renderer.Render(bitmap);
+        'bitmap.Save("test.png");
+
         'ReadData(".\Data\fishing.data")
-        ReadData(".\Data\car.data")
+        'ReadData(".\Data\car.data")
         'ReadData(".\Data\iris.data")
     End Sub
 

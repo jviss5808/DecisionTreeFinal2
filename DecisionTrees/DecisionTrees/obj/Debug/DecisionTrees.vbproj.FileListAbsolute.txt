@@ -20,3 +20,10 @@ D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGrap
 D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.Data.xml
 D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.Graphviz.xml
 D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\QuickGraph.Serialization.xml
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\Microsoft.GLEE.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\Microsoft.GLEE.Drawing.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\Microsoft.GLEE.GraphViewerGDI.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\Microsoft.Msagl.dll
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\Microsoft.GLEE.pdb
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\Microsoft.GLEE.Drawing.pdb
+D:\School\CIS 678\Decision Trees\DecisionTrees\DecisionTrees\bin\Debug\Microsoft.GLEE.GraphViewerGDI.pdb
